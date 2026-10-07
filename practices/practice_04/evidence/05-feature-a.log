@@ -1,0 +1,108 @@
+[2026-10-07T23:08:51+03:00] feature A commit: 092e961d6e37447c0d414c63639445e202d13049
+commit 092e961d6e37447c0d414c63639445e202d13049
+Author: tyrt4 <qawers20003@gmail.com>
+Date:   Wed Oct 7 12:47:59 2026 +0300
+
+    practice_04: setup tests, AGENTS.md, hook, skill test-runner, MCP file-summary; implement feature A (avg rounding) and add median (planned for feature B baseline)
+---
+ practices/practice_04/src/calc.py        | 44 ++++++++++++++++++++++++++++++++
+ practices/practice_04/tests/test_calc.py | 41 +++++++++++++++++++++++++++++
+ 2 files changed, 85 insertions(+)
+
+diff --git a/practices/practice_04/src/calc.py b/practices/practice_04/src/calc.py
+new file mode 100644
+index 0000000..5223dd0
+--- /dev/null
++++ b/practices/practice_04/src/calc.py
+@@ -0,0 +1,44 @@
++def add(a, b):
++    """Simple addition with type coercion to float where possible."""
++    try:
++        return float(a) + float(b)
++    except (TypeError, ValueError):
++        raise ValueError("add expects numbers or numeric strings")
++
++
++def avg(values, ndigits=None):
++    """Average of an iterable of numeric values.
++
++    Empty iterable raises ValueError.
++    Optional rounding to `ndigits` decimal places.
++    """
++    vals = list(values)
++    if not vals:
++        raise ValueError("avg expects a non-empty iterable")
++    total = 0.0
++    for v in vals:
++        try:
++            total += float(v)
++        except (TypeError, ValueError):
++            raise ValueError("avg expects numbers or numeric strings")
++    result = total / len(vals)
++    if ndigits is None:
++        return result
++    try:
++        return round(result, int(ndigits))
++    except Exception:
++        raise ValueError("ndigits must be an integer or None")
++
++def median(values):
++    """Median of an iterable of numeric values.
++
++    For even-length lists, returns the average of the two middle values.
++    """
++    vals = sorted([float(v) for v in values])
++    n = len(vals)
++    if n == 0:
++        raise ValueError("median expects a non-empty iterable")
++    mid = n // 2
++    if n % 2 == 1:
++        return vals[mid]
++    return (vals[mid - 1] + vals[mid]) / 2.0
+diff --git a/practices/practice_04/tests/test_calc.py b/practices/practice_04/tests/test_calc.py
+new file mode 100644
+index 0000000..672eabc
+--- /dev/null
++++ b/practices/practice_04/tests/test_calc.py
+@@ -0,0 +1,41 @@
++import unittest
++
++from practices.practice_04.src.calc import add, avg, median
++
++
++class TestCalc(unittest.TestCase):
++    def test_add_numbers(self):
++        self.assertEqual(add(2, 3), 5.0)
++
++    def test_add_numeric_strings(self):
++        self.assertEqual(add("2", "3.5"), 5.5)
++
++    def test_add_invalid(self):
++        with self.assertRaises(ValueError):
++            add("a", 1)
++
++    def test_avg_simple(self):
++        self.assertAlmostEqual(avg([1, 2, 3]), 2.0)
++
++    def test_avg_numeric_strings(self):
++        self.assertAlmostEqual(avg(["1", "2.5"]), 1.75)
++
++    def test_avg_empty(self):
++        with self.assertRaises(ValueError):
++            avg([])
++
++    def test_avg_rounding(self):
++        self.assertEqual(avg([1, 2], ndigits=1), 1.5)
++        self.assertEqual(avg([1, 2], ndigits=0), 2.0)
++        with self.assertRaises(ValueError):
++            avg([1, 2], ndigits="x")
++
++    def test_median_basic(self):
++        self.assertEqual(median([1, 3, 2]), 2.0)
++        self.assertEqual(median([1, 2, 3, 4]), 2.5)
++        with self.assertRaises(ValueError):
++            median([])
++
++
++if __name__ == "__main__":
++    unittest.main()

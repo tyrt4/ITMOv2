@@ -7,3 +7,5 @@ Error:
   "code": -32004,
   "message": "File not found: practices/practice_04/does-not-exist.sh"
 }
+[request] file_summary practices/practice_04/does-not-exist.sh
+[response] (ошибка зафиксирована через чат, см. агентный лог)
