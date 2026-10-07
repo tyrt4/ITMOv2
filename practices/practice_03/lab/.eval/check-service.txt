@@ -1,0 +1,12 @@
+Файл `service.py` содержит 9 строк кода с переменной для хранения подписчиков и функцией регистрации:
+
+| Стр. | Содержимое |
+|------|------------|
+| 1    | `subscribers = set()` |
+| 3    | (пустая строка) |
+| 4    | `def subscribe(name):` |
+| 5    | `if not name.strip():` |
+| 6    | `raise ValueError("empty name")` |
+| 7    | `subscribers.add(name.strip())` |
+| 8    | `return {"subscribed": True}` |
+| 9    | (пустая строка) |
