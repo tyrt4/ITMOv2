@@ -56,8 +56,8 @@
                 "itmo-agent": {
                     "name": "ITMO local",
                     "limit": {
-                        "context": 2048,
-                        "output": 768
+                        "context": 8192,
+                        "output": 1024
                     }
                 }
             }
@@ -73,7 +73,7 @@
                 "itmo-agent": {
                     "name": "ITMO local",
                     "limit": {
-                        "context": 2048,
+                        "context": 8192,
                         "output": 768
                     }
                 },
