@@ -48,7 +48,7 @@
       {
         "name": "practice_04_check",
         "shell": true,
-        "command": "bash practices/practice_04/scripts/check.sh | tee -a practices/practice_04/evidence/02-hook-feedback.log",
+        "command": "printf '\n[onWrite %s]\n' '$(date -Is)' >> practices/practice_04/evidence/02-hook-feedback.log && bash practices/practice_04/scripts/check.sh | tee -a practices/practice_04/evidence/02-hook-feedback.log",
         "cwd": ".",
         "patterns": [
           "practices/practice_04/src/**",
