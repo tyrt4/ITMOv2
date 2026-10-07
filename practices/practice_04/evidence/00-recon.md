@@ -4,14 +4,20 @@
 
 Выводы по проекту в рамках каталога `practices/practice_04`:
 
-- В каталоге присутствует только README и презентация, исходного кода и тестов нет.
-- В корне репозитория есть `opencode.json` (провайдеры моделей), но hook-ов для автопроверки нет.
-- В окружении не гарантированы `pytest`/`ruff`. Для проверок выбрана стандартная библиотека Python: `unittest`.
-- CHECK_COMMANDS: `bash practices/practice_04/scripts/check.sh` (внутри исполняет `python -m unittest -q`).
+- Есть минимальный исходный код: `src/calc.py` с функциями `add`, `avg`, `median`.
+- Есть тесты на `unittest`: `tests/test_calc.py` покрывают `add`, `avg`, `median` и кейсы ошибок.
+- Единая команда проверки: `bash practices/practice_04/scripts/check.sh` (внутри `python -m unittest -q`), вывод сохраняется в `evidence/.last-check.log`.
+- Настроен skill-шаблон `skills/test-runner` (скрипт запуска тестов) — требует заполнения `SKILL.md`.
+- Реализован локальный MCP сервер `mcp/file_summary_server.py` (JSON-RPC по stdin/stdout) с методом `file_summary(path)`.
+- В корне есть `AGENTS.md` с правилами для агента.
+- В `opencode.json` требуется привести JSON в валидный вид и корректно разместить `hooks` и `mcp` подключения.
 
-План минимальной реализации:
+CHECK_COMMANDS: `bash practices/practice_04/scripts/check.sh`.
 
-- Создать минимальный модуль на Python с юнит-тестами (unittest).
-- Настроить скрипт `scripts/check.sh` для единой проверки.
-- Настроить git hook (pre-commit) и описать интеграцию с OpenCode hook в evidence.
-- Реализовать skill и минимальный MCP tool (stdin/stdout JSON-RPC), собрать доказательства запусков.
+Принятые допущения (см. также `evidence/decisions.md`):
+
+- STACK: Python 3.x + unittest, без внешних зависимостей.
+- FEATURE_A: округление результата `avg(values, ndigits=None)`.
+- FEATURE_B: функция `median(values)`.
+- SKILL: "test-runner" — запускает проверку и сохраняет лог.
+- MCP tool: `file_summary(path)` — размер, строки, SHA256.
