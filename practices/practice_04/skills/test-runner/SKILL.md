@@ -1,4 +1,3 @@
----
 name: test-runner
 description: Запустить единый check.sh и сохранить результат в evidence/
 ---
