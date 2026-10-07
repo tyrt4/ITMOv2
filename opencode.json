@@ -3,7 +3,7 @@
     "default_agent": "build",
     "model": "ollama/itmo-agent",
     "small_model": "local-ollama/gemma3-270m",
-    "provider": {
+  "provider": {
         "vsellm": {
             "npm": "@ai-sdk/openai-compatible",
             "name": "VseLLM",
@@ -17,8 +17,34 @@
                 },
                 "anthropic/claude-sonnet-4": {
                     "name": "anthropic/claude-sonnet-4"
-                }
-            }
+  }
+  ,
+  "hooks": {
+    "onWrite": [
+      {
+        "name": "practice_04_check",
+        "shell": true,
+        "command": "bash practices/practice_04/scripts/check.sh",
+        "cwd": ".",
+        "patterns": [
+          "practices/practice_04/src/**",
+          "practices/practice_04/tests/**",
+          "practices/practice_04/scripts/**"
+        ]
+      }
+    ]
+  }
+  ,
+  "mcpServers": {
+    "file-summary": {
+      "command": "/usr/bin/env",
+      "args": [
+        "python3",
+        "practices/practice_04/mcp/file_summary_server.py"
+      ]
+    }
+  }
+}
         },
         "ollama": {
             "npm": "@ai-sdk/openai-compatible",
