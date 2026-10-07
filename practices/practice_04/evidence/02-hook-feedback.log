@@ -1,0 +1,5 @@
+HOOK onWrite: practice_04_check
+Triggered by write in practices/practice_04/src/
+Command: bash practices/practice_04/scripts/check.sh
+Exit: 0
+Output: OK
