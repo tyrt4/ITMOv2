@@ -13,3 +13,6 @@
 - MCP: реализован stdio-сервер; stdio-логи сохранены в 04-mcp-stdio-*.log как доказательство совместимости со спецификацией; диалоги агента сохранены в 04-mcp-*.log.
 
 2026-10-07: автотриггер не наблюдался в CLI-сессии, конфиг валиден, требуется desktop-сессия.
+[2026-10-07T23:08:51+03:00] onWrite auto-trigger not observed in CLI; config valid; desktop auto expected.
+[2026-10-07T23:08:51+03:00] MCP chat integration not available in this session; mcp list shows servers connected; stdio logs recorded with parse errors honestly.
+[2026-10-07T23:08:51+03:00] Providers: preserved; no secrets added; .gitignore allows evidence logs.

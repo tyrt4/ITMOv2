@@ -3,6 +3,7 @@
   "default_agent": "build",
   "model": "ollama/itmo-agent",
   "small_model": "local-ollama/gemma3-270m",
+  "plugin": ["opencode-yaml-hooks"],
   "provider": {
     "vsellm": {
       "npm": "@ai-sdk/openai-compatible",

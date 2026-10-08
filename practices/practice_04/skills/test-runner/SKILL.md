@@ -1,26 +1,29 @@
----
 name: test-runner
-description: Run unified project tests for practice_04 and collect logs
+description: Запустить единый check.sh и сохранить результат в evidence/
 ---
 
-Когда использовать:
-- После правок в `practices/practice_04/src` или тестах.
-- Для быстрой локальной проверки без лишних шагов.
+# Когда использовать
+Когда после правки нужно прогнать проверку проекта
+и зафиксировать результат для отчёта.
 
-Пошаговая процедура:
-1. Запустить команду `bash practices/practice_04/skills/test-runner/scripts/run.sh`.
-2. Скрипт вызывает `bash practices/practice_04/scripts/check.sh` и сохраняет вывод в `practices/practice_04/evidence/03-skill-run.log`.
-3. Проверить код возврата. 0 — успешно, иначе — падение тестов.
+# Процедура
+1. Убедиться, что рабочая директория — корень practice_04.
+2. Запустить `bash practices/practice_04/scripts/check.sh`.
+3. Вывод автоматически пишется в `evidence/.last-check.log`
+   и в `evidence/03-skill-run.log` через `tee -a`.
+4. Вернуть: команду, exit code, число пройденных тестов, фрагмент вывода.
 
-Границы (что нельзя):
-- Не изменять тесты для получения зелёного статуса.
-- Не модифицировать файлы вне `practices/practice_04`.
+# Границы
+- Не менять тесты, чтобы получить зелёный результат.
+- Не пропускать падения: если тесты упали — зафиксировать, не «замазывать».
 
-Проверка и ожидаемый результат:
-- Команда: `bash practices/practice_04/skills/test-runner/scripts/run.sh`.
-- Exit code: 0 при прохождении тестов; ненулевой при падении.
-- В логе ожидается строка без tracebacks при успехе.
+# Проверка
+- Команда: `bash practices/practice_04/scripts/check.sh`
+- Ожидаемый exit code: `0`
+- Ожидаемый вывод: `Ran N tests ... OK`
 
-Что вернуть:
-- Путь к логу `practices/practice_04/evidence/03-skill-run.log`.
-- Краткое резюме: количество тестов и статус.
+# Что вернуть
+- команду запуска;
+- exit code;
+- N и статус;
+- путь к логу.

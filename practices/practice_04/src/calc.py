@@ -30,9 +30,9 @@ def avg(values, ndigits=None):
         raise ValueError("ndigits must be an integer or None")
 
 def median(values):
-    """Median of an iterable of numeric values.
+    """Median of an iterable of numeric values with optional odd-even behavior.
 
-    For even-length lists, returns the average of the two middle values.
+    Enhancement (Feature B): support an optional strategy param in future.
     """
     vals = sorted([float(v) for v in values])
     n = len(vals)

@@ -1,0 +1,59 @@
+[2026-10-07T23:19:46+03:00] plugin setup
+/home/tyrt/ITMOv2
+practice_4
+/usr/bin/bun
+1.4.0
+plugin not installed
+no plugin key in opencode.json
+no .opencode/hook dir
+bun is installed; installing plugin opencode-yaml-hooks
+bun add v1.4.0 (34cbb9a40)
+
+installed opencode-yaml-hooks@2026.3.29
+
+[4.00ms] done
+attempt to locate plugin directory
+/home/tyrt node_modules (33)
+└── opencode-yaml-hooks@2026.3.29
+=== 2026-10-07T23:20:23+03:00 Шаг 3: финальная проверка конфигурации ===
+--- opencode.json plugin section ---
+  "plugin": ["opencode-yaml-hooks"],
+  "provider": {
+    "vsellm": {
+--- hooks.yaml ---
+hooks:
+  - event: file.changed
+    conditions:
+      - matchesAnyPath: practices/practice_04/src/**/*
+      - matchesAnyPath: practices/practice_04/tests/**/*
+      - matchesAnyPath: practices/practice_04/scripts/**/*
+    actions:
+      - bash: |
+          printf '\n[hook %s]\n' '$(date -Is)' >> practices/practice_04/evidence/02-hook-feedback.log
+          bash practices/practice_04/scripts/check.sh | tee -a practices/practice_04/evidence/02-hook-feedback.log
+--- bun list (global) ---
+└── opencode-yaml-hooks@2026.3.29
+=== 2026-10-07T23:24:24+03:00 Шаг 4: подготовка hook-лога ===
+-- tail init --
+=== 2026-10-07T23:24:43+03:00 Шаг 4: ожидание автотриггера 15с ===
+=== hook log после ломающей правки ===
+=== count строк ===
+0
+0
+=== 2026-10-07T23:25:12+03:00 Шаг 4B: проверка повторно 10с ===
+=== hook log после отката правки ===
+=== count строк ===
+0
+0
+=== 2026-10-07T23:28:08+03:00 MCP stdio session: success ===
+{"jsonrpc": "2.0", "id": 1, "result": {"protocolVersion": "2024-11-05", "capabilities": {"tools": {}}, "serverInfo": {"name": "file-summary", "version": "0.1.0"}}}
+{"jsonrpc": "2.0", "id": 2, "result": {"tools": [{"name": "file_summary", "description": "Summarize a file: size, line count, sha256", "inputSchema": {"type": "object", "properties": {"path": {"type": "string", "description": "File path"}}, "required": ["path"]}}]}}
+{"jsonrpc": "2.0", "id": 3, "result": {"content": [{"type": "json", "json": {"path": "practices/practice_04/scripts/check.sh", "size_bytes": 215, "line_count": 6, "sha256": "993b5a4d6dfec960210935b168387f678037d6d6721f02e7ff7f6653f2f247ce"}}]}}
+=== 2026-10-07T23:28:08+03:00 MCP stdio session: error ===
+{"jsonrpc": "2.0", "id": 1, "result": {"protocolVersion": "2024-11-05", "capabilities": {"tools": {}}, "serverInfo": {"name": "file-summary", "version": "0.1.0"}}}
+{"jsonrpc": "2.0", "id": 2, "result": {"tools": [{"name": "file_summary", "description": "Summarize a file: size, line count, sha256", "inputSchema": {"type": "object", "properties": {"path": {"type": "string", "description": "File path"}}, "required": ["path"]}}]}}
+{"jsonrpc": "2.0", "id": 3, "error": {"code": -32004, "message": "File not found: practices/practice_04/does-not-exist.sh"}}
+=== 2026-10-07T23:28:29+03:00 Финальная проверка README критериев ===
+--- evidence counts ---
+17
+21
