@@ -1,19 +1,19 @@
-## ADDED Requirements
+## ДОБАВЛЕНО: Требования
 
-### Requirement: UI availability
-The service SHALL serve a static UI under `/ui/` and redirect `/` to `/ui/`.
+### Требование: доступность UI
+Сервис ДОЛЖЕН раздавать статический UI под `/ui/` и редиректить `/` на `/ui/`.
 
-#### Scenario: Redirect
-- WHEN a client requests GET `/`
-- THEN the server responds 307/302 to `/ui/`
+#### Сценарий: Редирект
+- ЕСЛИ клиент запрашивает GET `/`
+- ТО сервер отвечает 307/302 на `/ui/`
 
-#### Scenario: UI index
-- WHEN a client requests GET `/ui/`
-- THEN the server responds 200 with HTML containing "Coffee Shop"
+#### Сценарий: UI index
+- ЕСЛИ клиент запрашивает GET `/ui/`
+- ТО сервер отвечает 200 с HTML, содержащим "Coffee Shop"
 
-### Requirement: Health display
-The UI SHALL display current health and readiness fetched from backend endpoints.
+### Требование: отображение статуса
+UI ДОЛЖЕН показывать текущее состояние health и readiness, получаемое с бэкенда.
 
-#### Scenario: Health OK
-- WHEN `/health` returns `{ "status": "ok" }`
-- THEN the UI shows `Health: ok` with a positive visual style
+#### Сценарий: Health OK
+- ЕСЛИ `/health` возвращает `{ "status": "ok" }`
+- ТО UI показывает `Health: ok` с положительным визуальным стилем

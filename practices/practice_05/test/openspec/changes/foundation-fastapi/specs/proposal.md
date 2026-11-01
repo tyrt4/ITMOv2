@@ -1,14 +1,14 @@
-# Foundation: FastAPI service
+# Основа: сервис FastAPI
 
-## Why
-We need a minimal, testable backend to iterate safely. FastAPI gives OpenAPI docs, validation, and good DX, so we can focus on features.
+## Почему
+Нужен минимальный, тестируемый бэкенд для безопасной итерации. FastAPI даёт OpenAPI, валидацию и хороший DX, что позволяет сосредоточиться на фичах.
 
-## How
-- Create FastAPI app with `/health` and `/ready` endpoints.
-- Reserve `/api` base and `/api/v1` router for future public endpoints.
-- Provide run instructions and a basic test suite (pytest).
+## Как
+- Создать приложение FastAPI с эндпоинтами `/health` и `/ready`.
+- Зарезервировать базу `/api` и роутер `/api/v1` для публичных эндпоинтов.
+- Добавить инструкции запуска и базовые тесты (pytest).
 
-## What follows
-- Subsequent features (menu, orders, payments) live under `/api/v1`.
-- OpenAPI docs available at `http://localhost:8000/docs` in dev.
-- Baseline tests ensure service is healthy before expanding scope.
+## Что следует
+- Последующие фичи (меню, заказы, оплата) живут под `/api/v1`.
+- OpenAPI доступен на `http://localhost:8000/docs` в dev.
+- Базовые тесты гарантируют здоровье сервиса до расширения.

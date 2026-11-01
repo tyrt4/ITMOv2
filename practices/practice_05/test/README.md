@@ -1,26 +1,29 @@
-# Coffee Backend (FastAPI) — practice_05/test
+# Кофейный бэкенд (FastAPI) — practice_05/test
 
-What runs on localhost
-- App base: http://localhost:8000/
+Что доступно локально
+- База приложения: http://localhost:8000/
 - Health: GET http://localhost:8000/health → { "status": "ok" }
 - Readiness: GET http://localhost:8000/ready → { "ready": true }
-- API base (reserved): http://localhost:8000/api
-- API v1 root: GET http://localhost:8000/api/v1/ → { "service": "coffee-backend", "version": "v1" }
+- База API (резерв): http://localhost:8000/api
+- Корень API v1: GET http://localhost:8000/api/v1/ → { "service": "coffee-backend", "version": "v1" }
 - OpenAPI docs: http://localhost:8000/docs
- - Frontend UI: http://localhost:8000/ui/ (автоматический редирект с "/")
+- Frontend UI: http://localhost:8000/ui/ (редирект с "/")
 
-Run locally
-- Create venv: `python -m venv .venv && . .venv/bin/activate`
-- Install deps: `pip install fastapi uvicorn pytest`
-- Start server: `uvicorn app.main:app --reload`
+Запуск локально
+- Создать venv: `python -m venv .venv && . .venv/bin/activate`
+- Установить зависимости: `pip install fastapi uvicorn pytest pytest-benchmark httpx2`
+- Старт: `uvicorn app.main:app --reload`
 
-Tests
+Тесты
 - `pytest -q`
+Бенчмарки
+- `pytest -q -k bench --benchmark-only`
 
 OpenSpec
 - `npm exec -y @fission-ai/openspec@latest -- validate --all`
 
-Structure
-- app/main.py — FastAPI app (health, ready, /api, /api/v1)
-- tests/ — pytest tests
-- openspec/ — OpenSpec artifacts
+Структура
+- app/main.py — FastAPI приложение (health, ready, /api, /api/v1)
+- tests/ — pytest тесты
+- openspec/ — артефакты OpenSpec
+- docs/CONTRACT.md — общий контракт UI↔Backend (данные, вызовы, ошибки, состояния)

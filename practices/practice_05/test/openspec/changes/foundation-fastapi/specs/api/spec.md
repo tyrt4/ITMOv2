@@ -1,19 +1,19 @@
-## ADDED Requirements
+## ДОБАВЛЕНО: Требования
 
-### Requirement: Health endpoints
-The service SHALL expose `GET /health` and `GET /ready`.
+### Требование: Health эндпоинты
+Сервис ДОЛЖЕН предоставлять `GET /health` и `GET /ready`.
 
-#### Scenario: Health OK
-- WHEN a client requests GET /health
-- THEN the API responds 200 with JSON `{ "status": "ok" }`
+#### Сценарий: Health OK
+- ЕСЛИ клиент запрашивает GET /health
+- ТО API отвечает 200 с JSON `{ "status": "ok" }`
 
-#### Scenario: Ready OK
-- WHEN a client requests GET /ready
-- THEN the API responds 200
+#### Сценарий: Ready OK
+- ЕСЛИ клиент запрашивает GET /ready
+- ТО API отвечает 200
 
-### Requirement: API namespace
-The service SHALL reserve `/api` and implement `/api/v1` for public endpoints.
+### Требование: Пространство имён API
+Сервис ДОЛЖЕН резервировать `/api` и реализовать `/api/v1` для публичных эндпоинтов.
 
-#### Scenario: Namespaces respond without 5xx
-- WHEN a client requests GET /api
-- THEN the API responds 200 or 404 but not 5xx
+#### Сценарий: Пространство имён без 5xx
+- ЕСЛИ клиент запрашивает GET /api
+- ТО API отвечает 200 или 404, но не 5xx

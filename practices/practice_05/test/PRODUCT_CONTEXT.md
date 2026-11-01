@@ -1,45 +1,56 @@
-# PRODUCT_CONTEXT: Coffee Shop Backend (FastAPI)
+# Контекст продукта: Бэкенд кофейни (FastAPI)
 
-## Vision
-Build a simple coffee shop backend to support menu management, ordering, pricing and discounts, and store status. The goal is clarity and incremental delivery using Spec‑Driven Development (SDD) with OpenSpec.
+## Видение
+Построить учебный бэкенд кофейни и минимальный фронтенд, поддерживающие управление меню, новости, заказы и оплату в CoffeeCoin, скидки (happy hour и скидка дня), расписание работы, детали состава/калорий и дополнительные функции (лояльность и отзывы). Доставка — инкрементально через SDD (OpenSpec и Spec Kit).
 
-## Audience
-- Students practicing SDD and OpenSpec
-- Developers iterating features safely with specs, tasks, and tests
+## Аудитория
+- Студенты, практикующие SDD (OpenSpec/Spec Kit)
+- Разработчики, добавляющие фичи по спекам, задачам и тестам
 
-## Glossary
-- CoffeeCoin: in‑house, fictional currency used for pricing and payments
-- Menu Item: coffee drink with name, ingredients, sizes, and price
-- Order: customer’s selection of items with total in CoffeeCoin
-- Store Status: open/closed derived from business hours
-- Roles: Customer (places orders), Barista (fulfills), Admin (manages menu)
+## Глоссарий
+- CoffeeCoin: внутренняя валюта для цен и оплат
+- Menu item: напиток/десерт с названием, составом, размерами, калориями и ценой
+- Order: заказ с суммой в CoffeeCoin и статусами created/paid
+- Store status: открыт/закрыт из расписания (по умолчанию 08:00–20:00)
+- Роли: Customer (делает заказ), Barista (готовит/выдаёт), Admin (управляет меню/новостями)
 
-## Architecture (High Level)
-- Stack: Python 3 + FastAPI
-- Data: in‑memory (dict/list) initially; SQLite optional later
-- API: REST with auto OpenAPI docs at `/docs` and `/openapi.json`
-- Tests: `pytest` + `fastapi.testclient`
-- Run: `uvicorn app.main:app --reload`
+## Архитектура (высокоуровневая)
+- Стек: Python 3 + FastAPI
+- Данные: in‑memory (dict/list) на старте; SQLite в перспективе
+- API: REST + OpenAPI на `/docs`
+- Тесты: `pytest` + `fastapi.testclient` + `pytest-benchmark`
+- Запуск: `uvicorn app.main:app --reload`
 
-Rationale
-- FastAPI provides type hints, validation, and OpenAPI out of the box
-- In‑memory keeps setup simple for practice; can swap to SQLite later
+Обоснование
+- FastAPI даёт типизацию, валидацию и OpenAPI из коробки
+- In‑memory упрощает сетап; позже можно перейти на SQLite
 
-## Features
-Planned and active changes under `openspec/changes/`:
-- Foundation (FastAPI) — `openspec/changes/foundation-fastapi/`
-- Menu management — planned
-- News feed (local JSON / in‑memory) — planned
-- Payments (CoffeeCoin, mock) — planned
-- Discounts (happy hour / history / daily) — planned
-- Store hours (open/closed) — planned
-- Composition & cost endpoints — planned
-- Extras (2+): e.g., Loyalty points, Reviews — planned
+## Фичи и ссылки
+Источник истины — `openspec/changes/*` и код `app/main.py`.
+- Foundation (FastAPI): health, ready, `/api`, `/api/v1` — openspec/changes/foundation-fastapi
+- Menu management: CRUD меню, details — openspec/changes/menu-management
+- News: список и создание — openspec/changes/news
+- Orders & Payments: создание, оплата, получение — openspec/changes/orders-payments
+- Discounts: скидка дня и happy hour — покрыто в foundation/orders/store-hours
+- Store hours: статус и расписание — openspec/changes/store-hours
+- Details (composition & calories): `/api/v1/menu/{id}/details` — openspec/changes/details
+- Loyalty: баллы по customerId — openspec/changes/loyalty
+- Reviews: список/создание — openspec/changes/reviews
 
-Update this list as changes are added/archived.
+Документация
+- OpenSpec: каталог `docs-openspec/` (обзор 00–03, backend/frontend артефакты)
+- Spec Kit: каталог `docs-speckit/` (constitution, backend/frontend артефакты)
+- Сравнение: `COMPARISON.md`
+- Общий контракт: `docs/CONTRACT.md` (данные, вызовы, ошибки, состояния)
 
-## Project Rules & Conventions
-- SDD via OpenSpec: every feature documents Why / How / What follows
-- Small, incremental changes; validate specs before code
-- Tests cover key endpoints and scenarios first
-- Prefer explicit, simple code; comment only where non‑obvious
+## Правила и соглашения
+- SDD через OpenSpec: каждый change имеет Why / How / What follows
+- Независимая ветка Spec Kit с constitution/spec/plan/tasks
+- Малые инкрементальные изменения; спеки валидируются до кода
+- Тесты покрывают ключевые эндпоинты (успех/ошибка/граница) и бенчмарки
+- RESTful стиль, понятные ошибки (`HTTPException(detail)`), публичные алиасы `/api/*` и версии под `/api/v1/*`
+
+## Ссылки быстрого доступа
+- API root: GET `/api/v1/` → `{ "service": "coffee-backend", "version": "v1" }`
+- Docs: `/docs`
+- UI: `/ui/` (если статический фронтенд смонтирован)

@@ -1,1 +1,1 @@
-# Frontend UI (static) for Coffee Shop
+# Фронтенд UI (статический) для кофейни

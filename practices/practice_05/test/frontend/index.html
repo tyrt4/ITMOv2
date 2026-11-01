@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,26 +7,65 @@
     <link rel="stylesheet" href="/ui/style.css" />
   </head>
   <body>
-    <header>
-      <h1>Coffee Shop</h1>
-      <nav>
-        <a href="#menu">Menu</a>
-        <a href="#status">Status</a>
+    <header class="site-header">
+      <div class="brand">Coffee<span>Coin</span></div>
+      <nav class="nav">
+        <a href="#menu">Меню</a>
+        <a href="#status">Статус</a>
+        <a href="#news">Новости</a>
+        <a href="#discounts">Скидки</a>
+        <a href="#order">Заказ</a>
       </nav>
     </header>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Ваш кофе — ваша энергия</h1>
+        <p>Лёгкий, минималистичный и тёплый стиль — вдохновлён классикой.</p>
+        <div class="hero-actions">
+          <button id="btn-refresh" class="btn primary">Обновить меню</button>
+          <button id="btn-seed" class="btn">Добавить демо-меню</button>
+        </div>
+      </div>
+    </section>
     <main>
-      <section id="status">
-        <h2>Store Status</h2>
-        <div id="health"></div>
-        <div id="ready"></div>
+      <section id="status" class="panel">
+        <h2>Статус магазина</h2>
+        <div class="status-line"><strong>Health:</strong> <span id="health"></span></div>
+        <div class="status-line"><strong>Ready:</strong> <span id="ready"></span></div>
+        <div class="status-line"><strong>Store:</strong> <span id="store"></span></div>
       </section>
-      <section id="menu">
-        <h2>Menu (sample)</h2>
-        <ul id="menu-list"></ul>
+      <section id="menu" class="panel">
+        <h2>Меню</h2>
+        <div id="menu-grid" class="grid"></div>
+        <p id="menu-empty" class="muted" hidden>Меню пустое. Нажмите «Добавить демо-меню».</p>
+      </section>
+      <section id="order" class="panel">
+        <h2>Быстрый заказ</h2>
+        <form id="order-form" class="order-form" onsubmit="return false;">
+          <label>
+            Позиция
+            <select id="order-item"></select>
+          </label>
+          <label>
+            Количество
+            <input id="order-qty" type="number" min="1" value="1" />
+          </label>
+          <button id="btn-order" class="btn primary">Создать заказ</button>
+          <button id="btn-pay" class="btn" disabled>Оплатить</button>
+          <div id="order-result" class="muted"></div>
+        </form>
+      </section>
+      <section id="news" class="panel">
+        <h2>Новости</h2>
+        <ul id="news-list"></ul>
+      </section>
+      <section id="discounts" class="panel">
+        <h2>Текущая скидка</h2>
+        <div id="discount" class="badge"></div>
       </section>
     </main>
-    <footer>
-      <a href="/docs" target="_blank">API Docs</a>
+    <footer class="site-footer">
+      <a href="/docs" target="_blank">Документация API</a>
     </footer>
     <script src="/ui/main.js"></script>
   </body>

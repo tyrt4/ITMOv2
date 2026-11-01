@@ -1,0 +1,22 @@
+{
+  "menu": [
+    {"name": "Латте", "description": "Мягкий молочный кофе", "category": "coffee", "ingredients": ["кофе","молоко"], "sizes": ["S","M","L"], "priceCoffeeCoin": 4.8, "prices": {"S":4.2, "M":4.8, "L":5.4}, "calories": 150, "popularity": 9},
+    {"name": "Капучино", "description": "Классика", "category": "coffee", "ingredients": ["кофе","молоко"], "sizes": ["S","M","L"], "priceCoffeeCoin": 4.5, "prices": {"S":4.0, "M":4.5, "L":5.0}, "calories": 120, "popularity": 8},
+    {"name": "Эспрессо", "description": "Крепкий шот", "category": "coffee", "ingredients": ["кофе"], "sizes": ["single"], "priceCoffeeCoin": 3.0, "calories": 5, "popularity": 7},
+    {"name": "Флэт уайт", "description": "Микропена", "category": "coffee", "ingredients": ["кофе","молоко"], "sizes": ["S","M"], "priceCoffeeCoin": 4.9, "calories": 130, "popularity": 6},
+    {"name": "Колд Брю", "description": "Холодное заваривание", "category": "coffee", "ingredients": ["кофе","вода"], "sizes": ["M"], "priceCoffeeCoin": 4.6, "calories": 10, "popularity": 5},
+    {"name": "Матча Латте", "description": "Зелёный чай матча", "category": "tea", "ingredients": ["матча","молоко"], "sizes": ["M"], "priceCoffeeCoin": 5.0, "calories": 160, "popularity": 6},
+    {"name": "Чай Масала", "description": "Пряный чай", "category": "tea", "ingredients": ["чай","специи","молоко"], "sizes": ["M"], "priceCoffeeCoin": 4.2, "calories": 110, "popularity": 5},
+    {"name": "Круассан", "description": "Слоёное тесто", "category": "dessert", "ingredients": ["мука","масло"], "sizes": ["std"], "priceCoffeeCoin": 2.5, "calories": 250, "popularity": 7},
+    {"name": "Маффин", "description": "Шоколадный", "category": "dessert", "ingredients": ["мука","шоколад"], "sizes": ["std"], "priceCoffeeCoin": 2.8, "calories": 300, "popularity": 6},
+    {"name": "Чизкейк", "description": "Нью-Йорк", "category": "dessert", "ingredients": ["сыр","печенье"], "sizes": ["std"], "priceCoffeeCoin": 3.5, "calories": 320, "popularity": 8}
+  ],
+  "news": [
+    {"title": "Новая смесь недели", "body": "Попробуйте свежую обжарку"},
+    {"title": "-20% в happy hour", "body": "С 15 до 17 скидка"},
+    {"title": "Осеннее меню", "body": "Тыквенный латте вернулся"}
+  ],
+  "reviews": [
+    {"menuId": 1, "rating": 5, "comment": "Отлично"}
+  ]
+}

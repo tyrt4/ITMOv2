@@ -1,30 +1,30 @@
-## ADDED Requirements
+## ДОБАВЛЕНО: Меню
 
-### Requirement: List menu items
-The API SHALL return a list of menu items at `GET /api/v1/menu`.
+### Требование: список меню
+- API возвращает список позиций по `GET /api/v1/menu`.
 
-#### Scenario: Empty list initially
-- WHEN a client requests GET `/api/v1/menu`
-- THEN the API responds 200 with `[]`
+#### Сценарий: пусто изначально
+- ЕСЛИ клиент делает GET `/api/v1/menu`
+- ТО API отвечает 200 с `[]`
 
-### Requirement: Create menu item
-The API SHALL create a menu item via `POST /api/v1/menu`.
+### Требование: создание позиции
+- API создаёт позицию через `POST /api/v1/menu`.
 
-#### Scenario: Valid create
-- WHEN a client POSTs valid JSON `{ name, ingredients, sizes, priceCoffeeCoin }`
-- THEN the API responds 201 with the created item including an integer `id`
+#### Сценарий: валидное создание
+- ЕСЛИ клиент POST-ит JSON `{ name, ingredients, sizes, priceCoffeeCoin }`
+- ТО API отвечает 201 с созданной записью и integer `id`
 
-### Requirement: Read/Update/Delete by id
-The API SHALL support GET/PUT/DELETE `/api/v1/menu/{id}`.
+### Требование: чтение/обновление/удаление по id
+- API поддерживает GET/PUT/DELETE `/api/v1/menu/{id}`.
 
-#### Scenario: Read existing
-- WHEN a client GETs `/api/v1/menu/{id}` for an existing item
-- THEN the API responds 200 with the item
+#### Сценарий: чтение существующей
+- ЕСЛИ GET `/api/v1/menu/{id}` для существующей
+- ТО 200 с записью
 
-#### Scenario: Update existing
-- WHEN a client PUTs updated JSON for an existing item
-- THEN the API responds 200 with the updated item
+#### Сценарий: обновление существующей
+- ЕСЛИ PUT с обновлённым JSON
+- ТО 200 с обновлённой записью
 
-#### Scenario: Delete existing
-- WHEN a client DELETEs `/api/v1/menu/{id}`
-- THEN the API responds 204 and subsequent GET responds 404
+#### Сценарий: удаление
+- ЕСЛИ DELETE `/api/v1/menu/{id}`
+- ТО 204, дальнейший GET — 404
